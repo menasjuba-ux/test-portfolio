@@ -1,0 +1,313 @@
+import React, { useState } from 'react';
+import { 
+  Linkedin, 
+  Mail, 
+  Phone,
+  MapPin,
+  Briefcase, 
+  Send,
+  User,
+  GraduationCap,
+  Code,
+  CheckCircle2,
+  Layers,
+  Cpu,
+  Download,
+  Github,
+  Building2,
+  Users,
+  Globe
+} from 'lucide-react';
+
+const App = () => {
+  const [activeTab, setActiveTab] = useState('accueil');
+
+  const experiences = [
+    {
+      company: "PREST'LUXURY",
+      role: "Assistant Web Master (En alternance)",
+      period: "Depuis 2025",
+      description: "Gestion et mise à jour technique du site web, optimisation SEO et support au développement de la présence digitale de la marque.",
+      tags: ["Webmastering", "Alternance", "Digital"]
+    },
+    {
+      company: "AJMF (Amitié Judéo-Musulmane de France)",
+      role: "Chargé de la Gestion du personnel",
+      period: "2024",
+      description: "Réalisation de documents officiels et établissement du bilan annuel de l'association.",
+      tags: ["RH", "Administratif", "Bilan Annuel"]
+    },
+    {
+      company: "DOMODECLIC",
+      role: "Chef de Projet (Réaménagement)",
+      period: "2024",
+      description: "Chargé du réaménagement des locaux et de la réorganisation des espaces collaboratifs. Gestion de la planification et coordination financière. Formation et encadrement de 5 salariés pour le bien-être au travail.",
+      tags: ["Management", "Projet", "Bien-être"]
+    },
+    {
+      company: "CYTIA PATRIMOINE GESTION",
+      role: "Gestionnaire",
+      period: "2022",
+      description: "Gestion des loyers, facturation et clôture annuelle des comptes du patrimoine.",
+      tags: ["Comptabilité", "Patrimoine"]
+    },
+    {
+      company: "MAIRIE DE RIS-ORANGIS (État Civil)",
+      role: "Agent de service public",
+      period: "2021",
+      description: "Gestion des demandes de passeports/CNI, organisation d'événements (mariages, enterrements), gestion des concessions du cimetière et transmission des actes civils.",
+      tags: ["État Civil", "Public"]
+    },
+    {
+      company: "MAIRIE DE RIS-ORANGIS (Ressources Humaines)",
+      role: "Assistant RH",
+      period: "2019 - 2020",
+      description: "Gestion de la paie, organisation des formations, transmission des BAFA et gestion du recrutement.",
+      tags: ["RH", "Paie", "Formation"]
+    }
+  ];
+
+  const formations = [
+    { title: "Bachelor Chef de Projet Digital", school: "CFA ITIS", year: "2025 - 2026", status: "En cours" },
+    { title: "BTS Support à l'Action Managériale", school: "Lycée Jean Baptiste Corot", year: "2025" },
+    { title: "BTS Comptabilité Gestion", school: "Lycée Robert Doisneau", year: "2023" },
+    { title: "Baccalauréat Pro Gestion-Administration", school: "Lycée Pierre Mendès France", year: "2021" }
+  ];
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'accueil':
+        return (
+          <div className="flex flex-col items-center justify-center h-full animate-in fade-in zoom-in duration-500 text-center px-4">
+            <div className="relative mb-6">
+              <div className="w-24 h-24 rounded-3xl bg-indigo-600 flex items-center justify-center text-white text-3xl font-black shadow-2xl shadow-indigo-500/40">
+                JM
+              </div>
+              <div className="absolute -bottom-2 -right-2 bg-green-500 w-6 h-6 rounded-full border-4 border-white dark:border-slate-900"></div>
+            </div>
+            <h1 className="text-4xl md:text-6xl font-black mb-4 tracking-tight">Juba <span className="text-indigo-600">MENAS</span></h1>
+            <p className="text-xl md:text-2xl font-bold text-slate-700 dark:text-slate-300 mb-4">Chef de Projet Digital</p>
+            <div className="max-w-2xl bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-2xl border border-indigo-100 dark:border-indigo-800/50 mb-8 shadow-sm">
+              <p className="text-indigo-700 dark:text-indigo-400 font-bold uppercase tracking-widest text-xs mb-2">Alternant Web Master</p>
+              <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                Actuellement en poste chez <strong>Prest'Luxury</strong>. <br/>
+                Rythme : 1 semaine de cours / 3 semaines en entreprise.
+              </p>
+            </div>
+            <div className="flex flex-wrap justify-center gap-4">
+              <button onClick={() => setActiveTab('contact')} className="px-8 py-4 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-700 transition-all flex items-center gap-2 shadow-lg shadow-indigo-500/25">
+                Me contacter <Send size={18} />
+              </button>
+              <button className="px-8 py-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl font-bold flex items-center gap-2 hover:bg-slate-50 dark:hover:bg-slate-700 transition-all shadow-sm">
+                Consulter le CV <Download size={18} />
+              </button>
+            </div>
+          </div>
+        );
+      case 'parcours':
+        return (
+          <div className="animate-in slide-in-from-right duration-500 h-full overflow-y-auto pr-4 custom-scrollbar">
+            <h2 className="text-3xl font-black mb-10 flex items-center gap-3"><GraduationCap className="text-indigo-600" size={32}/> Formations</h2>
+            <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-200 before:to-transparent">
+              {formations.map((f, i) => (
+                <div key={i} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-100 dark:bg-slate-800 dark:border-slate-700 text-indigo-600 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 transition-transform group-hover:scale-110">
+                    <CheckCircle2 size={16} />
+                  </div>
+                  <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 shadow-sm transition-all hover:shadow-md">
+                    <div className="flex justify-between items-center mb-1">
+                      <time className="font-black text-indigo-600 text-xs">{f.year}</time>
+                      {f.status && <span className="text-[10px] bg-green-100 text-green-600 px-2 py-0.5 rounded font-bold uppercase">{f.status}</span>}
+                    </div>
+                    <div className="text-slate-900 dark:text-white font-bold text-lg">{f.title}</div>
+                    <div className="text-slate-500 text-sm font-medium">{f.school}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      case 'experiences':
+        return (
+          <div className="animate-in slide-in-from-right duration-500 h-full overflow-y-auto pr-4 custom-scrollbar">
+            <h2 className="text-3xl font-black mb-10 flex items-center gap-3"><Briefcase className="text-indigo-600" size={32}/> Expériences Professionnelles</h2>
+            <div className="grid grid-cols-1 gap-6 pb-8">
+              {experiences.map((exp, i) => (
+                <div key={i} className="p-8 bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 rounded-[2rem] hover:border-indigo-500/50 transition-all group relative">
+                   {i === 0 && <div className="absolute top-4 right-8 bg-green-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter shadow-lg shadow-green-500/20 animate-pulse">Poste actuel</div>}
+                  <div className="flex flex-wrap justify-between items-start gap-4 mb-4">
+                    <div className="flex items-start gap-4">
+                      {exp.company === "PREST'LUXURY" && <div className="p-3 bg-indigo-50 dark:bg-indigo-900/30 rounded-2xl text-indigo-600"><Globe size={24}/></div>}
+                      <div>
+                        <h3 className="font-black text-2xl group-hover:text-indigo-600 transition-colors">{exp.company}</h3>
+                        <p className="text-indigo-500 font-bold uppercase text-xs tracking-widest mt-1">{exp.role}</p>
+                      </div>
+                    </div>
+                    <span className="text-sm font-black bg-slate-100 dark:bg-slate-900 px-4 py-1.5 rounded-full text-slate-500">{exp.period}</span>
+                  </div>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6 italic">
+                    {exp.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {exp.tags.map(t => <span key={t} className="text-[10px] font-black uppercase text-indigo-600 bg-indigo-50 dark:bg-indigo-900/20 px-3 py-1 rounded-lg">{t}</span>)}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      case 'competences':
+        return (
+          <div className="animate-in slide-in-from-right duration-500 h-full">
+            <h2 className="text-3xl font-black mb-10 flex items-center gap-3"><Code className="text-indigo-600" size={32}/> Expertise & Compétences</h2>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              <div className="space-y-8">
+                <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-6">Maîtrise Logicielle</h4>
+                {[
+                  { label: "Webmastering / SEO", level: 85 },
+                  { label: "Gestion de Projet Digital", level: 95 },
+                  { label: "Management d'Équipe", level: 90 },
+                  { label: "Pack Office", level: 100 },
+                  { label: "Ximi (Logiciel Intranet)", level: 95 }
+                ].map((s, i) => (
+                  <div key={i} className="group">
+                    <div className="flex justify-between text-sm font-bold mb-3 uppercase tracking-tighter">
+                      <span>{s.label}</span>
+                      <span className="text-indigo-600">{s.level}%</span>
+                    </div>
+                    <div className="h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                      <div className="h-full bg-indigo-600 rounded-full group-hover:bg-indigo-500 transition-all duration-1000" style={{width: `${s.level}%`}}></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 sm:col-span-2 mb-2">Points Forts</h4>
+                {[
+                  { icon: <CheckCircle2 size={24}/>, title: "Certification PIX", color: "text-blue-500" },
+                  { icon: <Globe size={24}/>, title: "Webmastering", color: "text-indigo-500" },
+                  { icon: <Layers size={24}/>, title: "Leadership", color: "text-purple-500" },
+                  { icon: <Users size={24}/>, title: "Recrutement", color: "text-green-500" }
+                ].map((item, i) => (
+                  <div key={i} className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800 flex flex-col items-center text-center gap-3 transition-transform hover:scale-105">
+                    <div className={item.color}>{item.icon}</div>
+                    <span className="text-xs font-black uppercase tracking-tight">{item.title}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      case 'contact':
+        return (
+          <div className="animate-in slide-in-from-right duration-500 h-full flex items-center justify-center">
+            <div className="w-full max-w-2xl bg-slate-50 dark:bg-slate-800/50 p-10 rounded-[3rem] border border-slate-200 dark:border-slate-700 shadow-xl">
+              <h2 className="text-3xl font-black mb-10 text-center uppercase tracking-widest italic">Me contacter</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                <div className="flex items-center gap-4 p-5 bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 hover:border-indigo-500 transition-colors">
+                  <div className="w-10 h-10 bg-indigo-50 dark:bg-indigo-900/30 rounded-lg flex items-center justify-center text-indigo-600"><Mail size={20}/></div>
+                  <div className="overflow-hidden">
+                    <p className="text-[10px] font-black text-slate-400 uppercase">Email</p>
+                    <p className="font-bold text-sm truncate">menasjuba@gmail.com</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 p-5 bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 hover:border-indigo-500 transition-colors">
+                  <div className="w-10 h-10 bg-indigo-50 dark:bg-indigo-900/30 rounded-lg flex items-center justify-center text-indigo-600"><Phone size={20}/></div>
+                  <div>
+                    <p className="text-[10px] font-black text-slate-400 uppercase">Téléphone</p>
+                    <p className="font-bold text-sm">07.69.27.49.09</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 p-5 bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 md:col-span-2 hover:border-indigo-500 transition-colors">
+                  <div className="w-10 h-10 bg-indigo-50 dark:bg-indigo-900/30 rounded-lg flex items-center justify-center text-indigo-600"><MapPin size={20}/></div>
+                  <div>
+                    <p className="text-[10px] font-black text-slate-400 uppercase">Adresse</p>
+                    <p className="font-bold text-sm">91130 Ris-Orangis</p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-center gap-6">
+                <a href="#" className="p-5 bg-indigo-600 text-white rounded-2xl hover:scale-110 transition-transform shadow-lg shadow-indigo-500/30"><Linkedin /></a>
+                <a href="#" className="p-5 bg-slate-900 text-white rounded-2xl hover:scale-110 transition-transform dark:bg-white dark:text-slate-900 shadow-lg"><Github /></a>
+              </div>
+            </div>
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-slate-100 dark:bg-slate-950 p-4 md:p-8 font-sans transition-colors duration-300">
+      <div className="w-full max-w-6xl h-[90vh] md:h-[850px] bg-white dark:bg-slate-900 rounded-[3.5rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] flex flex-col md:flex-row overflow-hidden border border-slate-200 dark:border-slate-800">
+        
+        {/* Navigation Sidebar */}
+        <div className="w-full md:w-28 lg:w-36 bg-slate-50 dark:bg-slate-900/80 border-r border-slate-100 dark:border-slate-800 flex md:flex-col items-center justify-between p-4 md:py-14 shrink-0">
+          <div className="text-indigo-600 font-black text-2xl hidden md:block">JM.</div>
+          
+          <nav className="flex md:flex-col gap-4 md:gap-10 flex-1 justify-center items-center">
+            {[
+              { id: 'accueil', icon: <User size={24}/>, label: 'Profil' },
+              { id: 'parcours', icon: <GraduationCap size={24}/>, label: 'Diplômes' },
+              { id: 'experiences', icon: <Briefcase size={24}/>, label: 'Parcours' },
+              { id: 'competences', icon: <Code size={24}/>, label: 'Expertise' },
+              { id: 'contact', icon: <Mail size={24}/>, label: 'Contact' }
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                title={tab.label}
+                className={`p-4 rounded-[1.5rem] transition-all relative group ${
+                  activeTab === tab.id 
+                  ? 'bg-indigo-600 text-white shadow-xl shadow-indigo-500/40 scale-110' 
+                  : 'text-slate-400 hover:text-indigo-600 hover:bg-white dark:hover:bg-slate-800 shadow-none'
+                }`}
+              >
+                {tab.icon}
+                <span className="absolute left-full ml-6 px-3 py-1.5 bg-slate-900 text-white text-[10px] font-black uppercase tracking-widest rounded-lg opacity-0 group-hover:opacity-100 transition-all translate-x-[-10px] group-hover:translate-x-0 hidden lg:block whitespace-nowrap z-50">
+                  {tab.label}
+                </span>
+              </button>
+            ))}
+          </nav>
+
+          <div className="hidden md:block">
+             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+          </div>
+        </div>
+
+        {/* Main Workspace */}
+        <main className="flex-1 p-6 md:p-14 lg:p-24 overflow-hidden relative">
+          <div className="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-indigo-100/40 dark:bg-indigo-900/10 rounded-full blur-[120px] pointer-events-none"></div>
+          <div className="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] bg-purple-100/40 dark:bg-purple-900/10 rounded-full blur-[120px] pointer-events-none"></div>
+          
+          <div className="relative h-full z-10">
+            {renderContent()}
+          </div>
+        </main>
+
+      </div>
+
+      <style>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #e2e8f0;
+          border-radius: 20px;
+        }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #334155;
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default App;
